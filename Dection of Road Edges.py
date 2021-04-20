@@ -6,7 +6,7 @@ def empty(x):
     pass
 
 
-cap = cv.VideoCapture("Resources/01.avi")
+cap = cv.VideoCapture("Resources/03.avi")
 cv.namedWindow('result', cv.WINDOW_AUTOSIZE)
 
 """创建滑动条，方便寻找合适参数"""
@@ -59,8 +59,6 @@ while True:
 
     # 再进行一次dilate，将原本较为稀疏但处于目标直线上的点膨胀，增强Canny处理效果
     ROI5 = cv.Canny(ROI4, lowerBound, upperBound)
-    cv.imshow("temp", ROI5)
-    cv.waitKey(0)
     # 进行Canny边缘检测
     Lines = cv.HoughLinesP(ROI5, 1, np.pi / 180, houghThreshold,
                            minLineLength=minLength, maxLineGap=maxLenGap)
