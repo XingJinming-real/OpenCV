@@ -9,7 +9,8 @@ all information about contours you need to know
 
 def contourFeatures():
     """
-    0.findContours dealing with grayScale imgs
+    0.findContours dealing with binary imgs, be careful, the noise has a great effect on findContours, so make sure it
+    is clean and without noise on the edge.
 
     1.moments  :return an array M which M['m00'] represents the area of the img
 
@@ -63,11 +64,11 @@ def contourFeatures():
     # print("area is {}".format(M['m00']))
 
     """count length && approximation"""
-    # print(cv.arcLength(cnt, True))
-    # imgApproximation = cv.approxPolyDP(cnt, 0.01 * cv.arcLength(cnt, True), True)
-    # cv.drawContours(imgOri, [imgApproximation], 0, [255, 0, 0], 2)
-    # cv.imshow("tep", imgOri)
-    # cv.waitKey(0)
+    print(cv.arcLength(cnt, True))
+    imgApproximation = cv.approxPolyDP(cnt, 0.01 * cv.arcLength(cnt, True), True)
+    cv.drawContours(imgOri, [imgApproximation], 0, [255, 0, 0], 2)
+    cv.imshow("tep", imgOri)
+    cv.waitKey(0)
 
     """imgHull"""
     # imgHull = cv.convexHull(cnt)
@@ -187,6 +188,6 @@ def contoursHierarchy():
 
 
 if __name__ == "__main__":
-    # contourFeatures()
+    contourFeatures()
     # contourFunctions()
     pass
