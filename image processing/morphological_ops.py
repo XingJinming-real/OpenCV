@@ -21,7 +21,7 @@ def main():
     """
     plt.ion()
     # kernel = np.ones((3, 3))
-    img = cv.imread('Resources/morphological.png')
+    img = cv.imread('../Resources/morphological.png')
     kernelRect = cv.getStructuringElement(cv.MORPH_RECT, (3, 3))
     imgDilate = cv.dilate(img, kernelRect)
     imgErosion = cv.erode(img, kernelRect)

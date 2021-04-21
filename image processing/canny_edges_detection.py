@@ -15,7 +15,7 @@ cv.namedWindow('temp1', cv.WINDOW_AUTOSIZE)
 
 
 def main():
-    img = cv.imread('Resources/answerCard.png', 0)
+    img = cv.imread('../Resources/answerCard.png', 0)
     while True:
         lowerBound = cv.getTrackbarPos('minValue', 'temp')
         upperBound = cv.getTrackbarPos('maxValue', 'temp')

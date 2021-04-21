@@ -9,7 +9,7 @@ def HSVPractice():
     def empty(x):
         pass
 
-    img = cv2.imread('Resources/circle.png')
+    img = cv2.imread('../Resources/circle.png')
     imgHsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     cv2.namedWindow('mask')
     cv2.namedWindow('imgNew')
@@ -53,7 +53,7 @@ def writeVideo():
 
 
 def GeometricTransformation():
-    img = cv2.imread("Resources/girl.jpg", 0)
+    img = cv2.imread("../Resources/girl.jpg", 0)
 
     def scaling():
         imgBigger = cv2.resize(img, None, fx=2, fy=2)
@@ -103,7 +103,7 @@ def GeometricTransformation():
         """同Affine(使用3个点求变换矩阵
         ,只不过要根据四个点求变换矩阵"""
         cv2.namedWindow('temp', cv2.WINDOW_AUTOSIZE)
-        img = cv2.imread("Resources/answerCard.png", 0)
+        img = cv2.imread("../Resources/answerCard.png", 0)
         """184 244 lt
             631 250 rt
             658 829 rb

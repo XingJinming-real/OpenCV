@@ -41,7 +41,7 @@ def getPerspectiveImg(biggestPoints, img):
 
 
 def getImg():
-    img = cv2.imread('Resources/answerCard.png')
+    img = cv2.imread('../Resources/answerCard.png')
     img = cv2.resize(img, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_CUBIC)
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     imgGray = cv2.GaussianBlur(imgGray, (3, 3), 1)

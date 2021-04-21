@@ -32,7 +32,7 @@ c = True
 radius = 0
 color = 0
 if __name__ == "__main__":
-    img = cv2.imread('Resources/paper section.jpg', 0)
+    img = cv2.imread('../Resources/paper section.jpg', 0)
     cv2.namedWindow("img")
     cv2.createTrackbar('color', 'img', 0, 255, empty)
     cv2.createTrackbar('radius', 'img', 2, 10, empty)

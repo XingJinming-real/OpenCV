@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 plt.ion()
 figure, ax = plt.subplots(1, 2, figsize=(17, 7))
-img = cv.imread("Resources/girl.jpg")
+img = cv.imread("../Resources/girl.jpg")
 imgPyramid = [img]
 for i in range(5):
     imgPyramid.append(cv.pyrDown(imgPyramid[i]))

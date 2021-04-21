@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    img = cv.imread('Resources/openCvlogo.png')
+    img = cv.imread('../Resources/openCvlogo.png')
     kernel2D = np.ones((3, 3)) / (3 * 3)
     img2D = cv.filter2D(img, -1, kernel2D)
     imgAvg = cv.boxFilter(img, -1, (3, 3))

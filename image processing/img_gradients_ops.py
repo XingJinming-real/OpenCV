@@ -31,7 +31,7 @@ def main():
 
         """be attention if the original img is uint8, and you convert it to cv_CV32_F, then the img will to wrong
             you need to convert it back to uint8"""
-        img = cv.imread('Resources/openCvlogo.png', 0)
+        img = cv.imread('../Resources/openCvlogo.png', 0)
         plt.imshow(img, 'gray', vmin=0, vmax=255)
         imgSobelX = cv.Sobel(img, cv.CV_32F, 1, 0, ksize=5)
         imgSobelY = cv.Sobel(img, cv.CV_32F, 1, 0, ksize=5)

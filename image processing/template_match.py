@@ -20,9 +20,9 @@ def templateMatch():
     :return: a grayscale image,
     where each pixel denotes how much does the neighbourhood of that pixel match with template.
     """
-    img = cv.imread('Resources/Mario.png')
+    img = cv.imread('../Resources/Mario.png')
     imgGray = img.copy()
-    imgTemplate = cv.imread('Resources/Mario_coin.png')
+    imgTemplate = cv.imread('../Resources/Mario_coin.png')
     rows, cols, channels = imgTemplate.shape
     res = cv.matchTemplate(imgGray, imgTemplate, cv.TM_CCOEFF_NORMED)
     while True:

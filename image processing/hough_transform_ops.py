@@ -2,18 +2,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2 as cv
 
-"""more about HoughLines and it's realLife application please view Detection of Road Edges.py"""
+"""more about HoughLines and it's realLife application please view detection_of_road_edges.py"""
 
 
 def empty(x):
-    print(x)
+    pass
 
 
 cv.namedWindow('result', cv.WINDOW_AUTOSIZE)
-cv.createTrackbar('BinaryThreshold', 'result', 240, 255, empty)
+cv.createTrackbar('param1', 'result', 75, 255, empty)
+cv.createTrackbar('param2', 'result', 40, 255, empty)
 
 
-def houghTransform():
+def houghTransformCircles():
     """attention:
         img should be grayScale/binary
         :return circles circles.shape=[1,n,3] where n stands for how many circles it has detected.
@@ -35,37 +36,22 @@ def houghTransform():
                     maxRadius: maximum circle radius if <=0 uses the maximum img diameter.
                                if<0 HOUGH_GRADIENT returns centers without radius, ...ALT always returns radius.
     """
-    # img = cv.imread('Resources/triangle.png')
-    img = cv.imread('Resources/openCvlogo.png')
-    # imgGray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    img = cv.imread('../Resources/openCvlogo.png')
     imgGray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     while True:
         imgResult = img.copy()
-        # imgCanny = cv.Canny(imgGray, 80, 180)
-        __, imgBinary = cv.threshold(imgGray, 20, 255, cv.THRESH_BINARY)
-        # lines = cv.HoughLinesP(imgCanny, 1, np.pi / 180, 100, maxLineGap=40)
-        # if lines is None:
-        #     break
-        # for line in lines:
-        #     x1, y1, x2, y2 = line[0]
-        #     cv.line(imgResult, (x1, y1), (x2, y2), (0, 0, 255), 3)
-        # cv.imshow('result', imgResult)
-        # cv.waitKey(22)
-        cv.imshow('img', imgBinary)
-        cv.waitKey(0)
-        circles = cv.HoughCircles(imgBinary, cv.HOUGH_GRADIENT, 1, 10,
-                                  param1=50, param2=30, minRadius=0, maxRadius=0)
+        param1 = cv.getTrackbarPos('param1', 'result')
+        param2 = cv.getTrackbarPos('param2', 'result')
+        circles = cv.HoughCircles(imgGray, cv.HOUGH_GRADIENT, 1, 10,
+                                  param1=param1, param2=param2, minRadius=0, maxRadius=0)
         circles = np.uint16(np.around(circles))
         for i in circles[0, :]:
             # draw the outer circle
-            cv.circle(img, (i[0], i[1]), i[2], (0, 255, 0), 2)
+            cv.circle(imgResult, (i[0], i[1]), i[2], (255, 255, 255), 2)
             # draw the center of the circle
-            cv.circle(img, (i[0], i[1]), 2, (0, 0, 255), 3)
-        cv.imshow('detected circles', img)
-        cv.waitKey(0)
-        cv.destroyAllWindows()
-        # for circle in circles:
-        #     pass
+            cv.circle(imgResult, (i[0], i[1]), 2, (0, 0, 255), 3)
+        cv.imshow('result', imgResult)
+        cv.waitKey(22)
 
 
-houghTransform()
+houghTransformCircles()

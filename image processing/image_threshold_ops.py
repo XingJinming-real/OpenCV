@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    img = cv.imread("Resources/girl.jpg", 0)
+    img = cv.imread("../Resources/girl.jpg", 0)
 
     def simpleThreshold():
         __, img_Binary = cv.threshold(img, 127, 255, cv.THRESH_BINARY)

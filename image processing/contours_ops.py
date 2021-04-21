@@ -40,7 +40,7 @@ def contourFeatures():
     """
 
     kernel = cv.getStructuringElement(cv.MORPH_RECT, (3, 3))
-    img = cv.imread("Resources/triangle.png")
+    img = cv.imread("../Resources/triangle.png")
     imgOri = img.copy()
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     ret, imgBinary = cv.threshold(img, 240, 255, cv.THRESH_BINARY_INV)
@@ -157,7 +157,7 @@ def contourFunctions():
     @# 3 using Hu moments to compute similarity and so far i don't know how and why to compute
     :return:
     """
-    img = cv.imread('Resources/cross img.png')
+    img = cv.imread('../Resources/cross img.png')
     imgGray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     contours, hierarchy = cv.findContours(imgGray, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     cnt = contours[0]
