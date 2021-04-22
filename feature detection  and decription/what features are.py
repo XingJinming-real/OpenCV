@@ -2,4 +2,5 @@ import matplotlib.pyplot as plt
 import cv2 as cv
 import numpy as np
 
-def
+"""briefly speaking, we want to find corners and some things that have a big change when them shift/scale/rotate 
+little """
