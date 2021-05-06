@@ -64,9 +64,9 @@ def contourFeatures():
     # print("area is {}".format(M['m00']))
 
     """count length && approximation"""
-    print(cv.arcLength(cnt, True))
-    imgApproximation = cv.approxPolyDP(cnt, 0.01 * cv.arcLength(cnt, True), True)
-    cv.drawContours(imgOri, [imgApproximation], 0, [255, 0, 0], 2)
+    # print(cv.arcLength(cnt, True))
+    # imgApproximation = cv.approxPolyDP(cnt, 0.01 * cv.arcLength(cnt, True), True)
+    cv.drawContours(imgOri, contours, 0, [255, 255, 0], 2)
     cv.imshow("tep", imgOri)
     cv.waitKey(0)
 
@@ -169,6 +169,7 @@ def contourFunctions():
         cv.line(img, tuple(cnt[b][0]), tuple(cnt[e][0]), (0, 255, 255), 2)
         cv.circle(img, tuple(cnt[f][0]), 3, (0, 0, 255), 1)
     cv.imshow("temp", img)
+    cv.waitKey(0)
     # print(cv.pointPolygonTest(cnt, (20, 20), False))
     print(cv.matchShapes(cnt, cnt, method=cv.CONTOURS_MATCH_I1, parameter=0))
 

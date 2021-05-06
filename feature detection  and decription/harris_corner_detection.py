@@ -13,7 +13,7 @@ def harris_corner_detection():
     r1 and r2 are the eigenvalues of M
     when |R| is small which means r1 and r2 is small the region is flat
     when R<0 which happens when r1>>r2 or vice versa, the region is edge
-    when R is large, which means r1 and r22 are large and r1≈r2 the region is corner"""
+    when R is large, which means r1 and r2 are large and r1≈r2 the region is corner"""
     """:parameter img(float 32),blockSize(the neighbour considered for corner detection
     ksize: aperture parameter of the sobel derivative used.
     k: harris detector free parameter"""

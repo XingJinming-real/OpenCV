@@ -14,7 +14,7 @@ def Shi_Tomasi_corner_detection():
     @:parameter (img,cornersNum,cornersScore(0~1),min L2 between arbitrary two corners)
     :return:
     """
-    img = cv.imread('../Resources/answerCard.png')
+    img = cv.imread('../Resources/corner.png')
     imgGray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     corners = cv.goodFeaturesToTrack(np.float32(imgGray), 10, 0.8, 20)
     for perCorner in corners:

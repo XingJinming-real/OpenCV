@@ -9,7 +9,7 @@ import numpy as np
 def imgSegmentation():
     """注意我们使用watershed算法，处理灰度图
     首先我们得到一定是foreGround的图像(binary，我们想要让不同的物体分开))(该图像中，sure-foreground为255，其余为0
-    然后得到一定是background的图像(binary)(该图像中，褐色部分一定是background)
+    然后得到一定是background的图像(binary)(该图像中，黑色部分一定是background)
     除此之外，我们还剩下我们不确定的区域(不确定的区域可以通过backgroundImg-foreground，注意
     他们通常是物体之间的交界处，)
     原始的watershed算法容易过检测，因此我们使用带有标签标记的图像(通过cv.connectedComponents(sure-foreground(binary))(该函数

@@ -6,7 +6,7 @@ def empty(x):
     pass
 
 
-cap = cv.VideoCapture("Resources/03.avi")
+cap = cv.VideoCapture("../Resources/03.avi")
 cv.namedWindow('result', cv.WINDOW_AUTOSIZE)
 
 """创建滑动条，方便寻找合适参数"""
@@ -54,16 +54,14 @@ while True:
     kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (5, 5))
     # 创建椭圆形卷积核
     ROI3 = cv.morphologyEx(ROI2, cv.MORPH_CLOSE, kernel)
-    # 进行一次形态学闭操作，即先dilate再erode，以求增强边界效果，同时去除一些孤立的噪声白点和白色毛刺状噪声
+    # 进行一次形态学闭操作，即先erode再dilate，以求去除一些孤立的噪声白点和白色毛刺状噪声
     ROI4 = cv.morphologyEx(ROI3, cv.MORPH_DILATE, kernel)
-
     # 再进行一次dilate，将原本较为稀疏但处于目标直线上的点膨胀，增强Canny处理效果
     ROI5 = cv.Canny(ROI4, lowerBound, upperBound)
     # 进行Canny边缘检测
-    Lines = cv.HoughLinesP(ROI5, 1, np.pi / 180, houghThreshold,
-                           minLineLength=minLength, maxLineGap=maxLenGap)
+    Lines = cv.HoughLinesP(ROI5, 1, np.pi / 180, houghThreshold, minLineLength=minLength, maxLineGap=maxLenGap)
     # 使用HoughTransform进行直线检测
-    # XingJinming2019284091
+
     if Lines is None:
         continue
         # 如果没有检测出，则处理下一帧
@@ -71,13 +69,13 @@ while True:
         # 对每一个检测出的可能目标直线
         x1, y1, x2, y2 = line[0]
         """
-                    np.abs(x1 - x2) <= 10 or np.abs(y1 - y2) <= 10:
-                    前者表示直线接近垂直，后者表示直线接近水平，显然不是待求边界
-                    (x2 - x1) / (y1 - y2) > 1 or (x2 - x1) / (y2 - y1) > 0.8:
-                    我们从图中可以得知待求直线的斜率较小，上述判断去除了斜率较大的很可能不是目标的直线
-                    (np.abs(x1 - x2) < 20 and np.abs(y1 - y2) > 150):
-                    这里是对第一条的补充，表示如果直线接近垂直(水平变化较小，垂直变换较大)，则不是待求目标
-                """
+            np.abs(x1 - x2) <= 10 or np.abs(y1 - y2) <= 10:
+            前者表示直线接近垂直，后者表示直线接近水平，显然不是待求边界
+            (x2 - x1) / (y1 - y2) > 1 or (x2 - x1) / (y2 - y1) > 0.8:
+            我们从图中可以得知待求直线的斜率较小，上述判断去除了斜率较大的很可能不是目标的直线
+            (np.abs(x1 - x2) < 20 and np.abs(y1 - y2) > 150):
+            这里是对第一条的补充，表示如果直线接近垂直(水平变化较小，垂直变换较大)，则不是待求目标
+        """
         if np.abs(x1 - x2) <= 10 or np.abs(y1 - y2) <= 10 or (x2 - x1) / (
                 y1 - y2) > 1 or (x2 - x1) / (y2 - y1) > 0.8 or (
                 np.abs(x1 - x2) < 20 and np.abs(y1 - y2) > 150):
@@ -86,4 +84,4 @@ while True:
         cv.line(imgResult, (x1, y1), (x2, y2), (0, 0, 255), 3)
     print(20 * '*')
     cv.imshow("result", imgResult)
-    cv.waitKey(22)
+    cv.waitKey(20)

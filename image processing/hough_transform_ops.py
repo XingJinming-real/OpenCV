@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2 as cv
 
-"""more about HoughLines and it's realLife application please view detection_of_road_edges.py"""
+"""more about HoughLines and it's realLife application please view realWorld_detection_of_road_edges.py"""
 
 
 def empty(x):

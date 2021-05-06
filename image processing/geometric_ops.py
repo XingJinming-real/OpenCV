@@ -65,8 +65,8 @@ def GeometricTransformation():
     def translation():
         rows, cols = img.shape
         imgShift = cv2.warpAffine(img, np.float32([[1, 0, -100], [0, 1, -50]]), (rows - 100, cols - 50))
-        #  Translation is the shifting of an object's location. If you know the shift in the (x,y) direction and let it be (tx,ty),
-        #  you can create the transformation matrix M as follows:
+        # Translation is the shifting of an object's location. If you know the shift in the (x,y) direction and let
+        # it be (tx,ty), you can create the transformation matrix M as follows:
         #
         # M=[1 0 tx
         #    0 1 ty]
